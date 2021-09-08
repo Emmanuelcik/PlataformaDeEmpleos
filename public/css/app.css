@@ -21637,6 +21637,11 @@ video {
           animation: bounce 1s infinite;
 }
 
+.contenedor {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
 @media (min-width: 640px){
   .sm\:container{
     width: 100%;
