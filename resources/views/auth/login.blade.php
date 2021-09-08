@@ -8,7 +8,7 @@
                 <div class="bg-gray-300 text-gray-700 uppercase text-center py-3 px-6 mb-0">
                     {{__("Login")}}
                 </div>
-                    <form class="py-10 px-5" method="POST" action="{{ route('login') }}">
+                    <form class="py-10 px-5" method="POST" action="{{ route('login') }}" novalidate>
                         @csrf
 
                         <div class="flex flex-wrap mb-6">
@@ -17,7 +17,7 @@
                                 <input id="email" type="email" class="p-3 bg-gray-200 rounded form-input w-full @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 w-full mt-5 text-sm" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -29,7 +29,7 @@
                             <input id="password" type="password" class="p-3 bg-gray-200 rounded form-input w-full @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                             @error('password')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 w-full mt-5 text-sm" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror

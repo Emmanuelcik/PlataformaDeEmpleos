@@ -10,15 +10,15 @@
                         {{__("Register")}}
                     </div>
 
-                        <form class="py-10 px-5" method="POST" action="{{ route('register') }}">
+                        <form class="py-10 px-5" method="POST" action="{{ route('register') }}" novalidate>
                             @csrf
 
                             <div class="flex flex-wrap mb-6">
                                 <label for="name" class="block text-gray-700 text-sm mb-2">{{ __('Name') }}</label>
-                                    <input id="name" type="text" class="p-3 bg-gray-200 rounded form-input w-full @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    <input id="name" type="text" class="p-3 bg-gray-200 rounded form-input w-full @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"  autocomplete="name" autofocus>
 
                                     @error('name')
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 w-full mt-5 text-sm" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
@@ -26,10 +26,10 @@
 
                             <div class="flex flex-wrap mb-6">
                                 <label for="email" class="block text-gray-700 text-sm mb-2">{{ __('E-Mail Address') }}</label>
-                                    <input id="email" type="email" class="p-3 bg-gray-200 rounded form-input w-full @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                    <input id="email" type="email" class="p-3 bg-gray-200 rounded form-input w-full @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email">
 
                                     @error('email')
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 w-full mt-5 text-sm" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
@@ -37,10 +37,10 @@
 
                             <div class="flex flex-wrap mb-6">
                                 <label for="password" class="block text-gray-700 text-sm mb-2">{{ __('Password') }}</label>
-                                    <input id="password" type="password" class="p-3 bg-gray-200 rounded form-input w-full @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    <input id="password" type="password" class="p-3 bg-gray-200 rounded form-input w-full @error('password') is-invalid @enderror" name="password"  autocomplete="new-password">
 
                                     @error('password')
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 w-full mt-5 text-sm" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
