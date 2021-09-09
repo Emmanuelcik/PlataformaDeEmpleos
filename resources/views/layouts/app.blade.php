@@ -55,7 +55,11 @@
                 </div>
             </div>
         </nav>
-
+        <div class="bg-gray-700 ">
+            <nav class="container mx-auto contenedor flex space-x-1">
+                @yield('navegacion')
+            </nav>
+        </div>
         <main class="py-4">
             @yield('content')
         </main>

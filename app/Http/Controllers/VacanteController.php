@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class VacanteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(["auth", "verified"]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,7 @@ class VacanteController extends Controller
      */
     public function index()
     {
-        //
+        return view("vacantes.index");
     }
 
     /**
