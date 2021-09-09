@@ -21,3 +21,6 @@ Route::get('/', function () {
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//VACANTES
+Route::get("/vacantes", "vacanteController@index")->name("vacantes.index");
