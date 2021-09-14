@@ -12,7 +12,7 @@
             <label for="titulo" class="block text-gray-700 text-sm mb-2">Titulo Vacante: </label>
             <input type="text" name="titulo" class="p-3 bg-white-100 rounded form-input w-full @error('password') is-invalid @enderror">
         </div>
-
+        {{-- Experiencia --}}
         <div class="mb-5">
             <label for="experiencia" class="block text-gray-700 text-sm mb-2">Experiencia: </label>
             <select name="" id="experiencia"
@@ -26,7 +26,21 @@
                 @endforeach
             </select>
         </div>
-
+        {{-- Categoria --}}
+        <div class="mb-5">
+            <label for="categoria" class="block text-gray-700 text-sm mb-2">Categoria: </label>
+            <select name="" id="categoria"
+                class="block appearance-none border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 p-3 bg-gray-100 w-full"
+                name="categoria">
+                <option value="" disabled selected>--Seleccione--</option>
+                @foreach ($categorias as $categoria)
+                    <option value="{{$categoria->id}}">
+                        {{$categoria->nombre}}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        {{-- Ubicacion --}}
         <div class="mb-5">
             <label for="ubicacion" class="block text-gray-700 text-sm mb-2">Ubicacion: </label>
             <select name="" id="ubicacion"
@@ -40,16 +54,16 @@
                 @endforeach
             </select>
         </div>
-
+        {{-- SALARIO --}}
         <div class="mb-5">
-            <label for="experiencia" class="block text-gray-700 text-sm mb-2">Categoría: </label>
-            <select name="" id="experiencia"
+            <label for="salario" class="block text-gray-700 text-sm mb-2">Salario: </label>
+            <select name="" id="salario"
                 class="block appearance-none border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 p-3 bg-gray-100 w-full"
-                name="experiencia">
+                name="salario">
                 <option value="" disabled selected>--Seleccione--</option>
-                @foreach ($experiencias as $experiencia)
-                    <option value="{{$experiencia->id}}">
-                        {{$experiencia->nombre}}
+                @foreach ($salarios as $salario)
+                    <option value="{{$salario->id}}">
+                        {{$salario->nombre}}
                     </option>
                 @endforeach
             </select>
