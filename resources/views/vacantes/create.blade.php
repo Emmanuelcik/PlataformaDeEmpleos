@@ -14,14 +14,28 @@
         </div>
 
         <div class="mb-5">
-            <label for="categoria" class="block text-gray-700 text-sm mb-2">Categoría: </label>
-            <select name="" id="categoria"
+            <label for="experiencia" class="block text-gray-700 text-sm mb-2">Experiencia: </label>
+            <select name="" id="experiencia"
                 class="block appearance-none border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 p-3 bg-gray-100 w-full"
-                name="categoria">
+                name="experiencia">
                 <option value="" disabled selected>--Seleccione--</option>
-                @foreach ($categorias as $categoria)
-                    <option value="{{$categoria->id}}">
-                        {{$categoria->nombre}}
+                @foreach ($experiencias as $experiencia)
+                    <option value="{{$experiencia->id}}">
+                        {{$experiencia->nombre}}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="mb-5">
+            <label for="experiencia" class="block text-gray-700 text-sm mb-2">Categoría: </label>
+            <select name="" id="experiencia"
+                class="block appearance-none border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 p-3 bg-gray-100 w-full"
+                name="experiencia">
+                <option value="" disabled selected>--Seleccione--</option>
+                @foreach ($experiencias as $experiencia)
+                    <option value="{{$experiencia->id}}">
+                        {{$experiencia->nombre}}
                     </option>
                 @endforeach
             </select>
