@@ -1,0 +1,51 @@
+// editor
+.medium-editor-toolbar-active {
+    visibility: visible;
+    background: rgba(56, 178, 172, var(--bg-opacity));
+    color: white;
+}
+
+.medium-editor-element,
+.descripcion {
+    min-height: 300px;
+
+    ol, ul, h1, h2, h3, p, a {
+        color: #4a5568;
+    }
+
+    ol, ul {
+        padding-left: 50px;
+    }
+    ol {
+        list-style: decimal;
+    }
+    ul {
+        list-style: disc;
+    }
+    h2, h3 {
+        margin: 1rem 0;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+    h3 {
+        font-size: 2.2rem;
+    }
+    p {
+        font-size: 1rem;
+        line-height: 2;
+    }
+}
+
+// Dropzone
+.dropzone {
+    border: 2px dashed #C1C1C1;
+
+    .dz-error {
+        display: none;
+    }
+
+    .dz-message .dz-button{
+        color: #666;
+    }
+}
