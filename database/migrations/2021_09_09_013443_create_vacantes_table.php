@@ -24,10 +24,17 @@ class CreateVacantesTable extends Migration
             $table->timestamps();
         });
 
+        Schema::create('ubicacions', function (Blueprint $table) {
+            $table->id();
+            $table->string("nombre");
+            $table->timestamps();
+        });
+
         Schema::create('vacantes', function (Blueprint $table) {
             $table->id();
             $table->foreignId("categoria_id")->references("id")->on("categorias")->onDelete("cascade");
             $table->foreignId("experiencia_id")->references("id")->on("experiencias")->onDelete("cascade");
+            $table->foreignId("ubicacion_id")->references("id")->on("ubicacions")->onDelete("cascade");
             $table->timestamps();
         });
     }
@@ -41,6 +48,7 @@ class CreateVacantesTable extends Migration
     {
         Schema::dropIfExists('vacantes');
         Schema::dropIfExists('experiencias');
+        Schema::dropIfExists('ubicacions');
         Schema::dropIfExists('categorias');
     }
 }
