@@ -2,6 +2,8 @@
 
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/medium-editor/5.23.3/css/medium-editor.min.css" integrity="sha512-zYqhQjtcNMt8/h4RJallhYRev/et7+k/HDyry20li5fWSJYSExP9O07Ung28MUuXDneIFg0f2/U3HJZWsTNAiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/basic.min.css" integrity="sha512-xBn/8sQ2hTyrml7BzlvvU3cF8MbXbfQTTxmQtm41Xr7BNrAULvZCJZQvRMbQB9H0A2SYMltfmXijXQi+gRRuSw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
 
 @section('navegacion')
@@ -83,6 +85,16 @@
             <input type="hidden" name="descripcion" id="descripcion">
         </div>
 
+        <div class="mb-5">
+            <label for="descripcion"
+            class="block text-gray-700 text-sm mb-2">Imagen de la vacante: </label>
+
+            <div id="dropzoneDevJobs" class="dropzone rounded bg-gray-100">
+
+            </div>
+
+        </div>
+
         <button type="submit" class="bg-teal-500 w-full hover:bg-teal-600 text-gray-100 font-bold p-3 focus:outline focus:shadow-outline uppercase">
             Publicar Vacante
         </button>
@@ -92,8 +104,12 @@
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-editor/5.23.3/js/medium-editor.min.js" integrity="sha512-5D/0tAVbq1D3ZAzbxOnvpLt7Jl/n8m/YGASscHTNYsBvTcJnrYNiDIJm6We0RPJCpFJWowOPNz9ZJx7Ei+yFiA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/min/dropzone.min.js" integrity="sha512-Mn7ASMLjh+iTYruSWoq2nhoLJ/xcaCbCzFs0ZrltJn7ksDBx+e7r5TS7Ce5WH02jDr0w5CmGgklFoP9pejfCNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script>
+        Dropzone.autoDiscover = false;
         document.addEventListener("DOMContentLoaded", () => {
+            //MEDIUM EDITOR
             const editor = new MediumEditor(".editable", {
                 toolbar: {
                     buttons: ["bold", "italic", "underline", "anchor", "justifyLeft", "justifyCenter", "justifyRight", "justifyFull", "orderList", "unorderList", "h2", "h3"],
@@ -109,6 +125,17 @@
                 const contenido = editor.getContent();
                 document.querySelector("#descripcion").value = contenido;
             });
+
+            //DROPZONE
+            const dropzoneDevJobs = new Dropzone("#dropzoneDevJobs", {
+                url: "/vacantes/imagen",
+                headers: {
+                    "X-CSRF-TOKEN": document.querySelector("meta[name=csrf-token]").content
+                },
+                success: function(file, response){
+
+                }
+            })
         })
     </script>
 @endsection

@@ -40,7 +40,10 @@
 // Dropzone
 .dropzone {
     border: 2px dashed #C1C1C1;
-
+    min-height: 80px;
+    height: auto;
+    width: 100%;
+    display: inline-block;
     .dz-error {
         display: none;
     }
