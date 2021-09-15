@@ -92,7 +92,7 @@
             <div id="dropzoneDevJobs" class="dropzone rounded bg-gray-100">
 
             </div>
-
+            <p id="alerta"></p>
         </div>
 
         <button type="submit" class="bg-teal-500 w-full hover:bg-teal-600 text-gray-100 font-bold p-3 focus:outline focus:shadow-outline uppercase">
@@ -129,13 +129,32 @@
             //DROPZONE
             const dropzoneDevJobs = new Dropzone("#dropzoneDevJobs", {
                 url: "/vacantes/imagen",
+                dictDefaultMessage: "Sube Aquí la imagen",
+                acceptedFiles: ".png,.jpg,.jpeg,.gif,.bmp",
+                addRemoveLinks: true,
+                dictRemoveFile: "Borrar Archivo",
+                maxFiles: 1,
                 headers: {
                     "X-CSRF-TOKEN": document.querySelector("meta[name=csrf-token]").content
                 },
                 success: function(file, response){
+                    const alerta = document.querySelector("#alerta");
+                    alert.textContent = ""
+                },
+                error: function(file, response){
+                    const alerta = document.querySelector("#alerta");
+                    alert.textContent = "Formato no valido";
+                },
+                maxFilesexceeded: function(file){
+                    if (this.files[1] != null ){
+                        this.removeFile(this.files[0]);
+                        this.addFile(file);
+                    }
+                },
+                removeddile: function(file, response){
 
                 }
-            })
+            });
         })
     </script>
 @endsection

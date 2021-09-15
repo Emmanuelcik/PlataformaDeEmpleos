@@ -21704,6 +21704,7 @@ video {
 }
 
 .dropzone {
+  text-align: center;
   border: 2px dashed #C1C1C1;
   min-height: 80px;
   height: auto;
