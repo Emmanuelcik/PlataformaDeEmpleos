@@ -86,12 +86,13 @@
         </div>
 
         <div class="mb-5">
-            <label for="descripcion"
+            <label for="dropzoneDevJobs"
             class="block text-gray-700 text-sm mb-2">Imagen de la vacante: </label>
 
             <div id="dropzoneDevJobs" class="dropzone rounded bg-gray-100">
 
             </div>
+            <input type="hidden" name="imagen" id="imagen">
             <p id="alerta"></p>
         </div>
 
@@ -102,8 +103,9 @@
 @endsection
 
 @section('scripts')
+    {{-- editor de minum --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-editor/5.23.3/js/medium-editor.min.js" integrity="sha512-5D/0tAVbq1D3ZAzbxOnvpLt7Jl/n8m/YGASscHTNYsBvTcJnrYNiDIJm6We0RPJCpFJWowOPNz9ZJx7Ei+yFiA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    {{-- Drop Zone --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/min/dropzone.min.js" integrity="sha512-Mn7ASMLjh+iTYruSWoq2nhoLJ/xcaCbCzFs0ZrltJn7ksDBx+e7r5TS7Ce5WH02jDr0w5CmGgklFoP9pejfCNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
@@ -129,30 +131,33 @@
             //DROPZONE
             const dropzoneDevJobs = new Dropzone("#dropzoneDevJobs", {
                 url: "/vacantes/imagen",
-                dictDefaultMessage: "Sube Aquí la imagen",
+                dictDefaultMessage: 'Sube aquí tu archivo',
                 acceptedFiles: ".png,.jpg,.jpeg,.gif,.bmp",
                 addRemoveLinks: true,
-                dictRemoveFile: "Borrar Archivo",
+                dictRemoveFile: 'Borrar Archivo',
                 maxFiles: 1,
                 headers: {
-                    "X-CSRF-TOKEN": document.querySelector("meta[name=csrf-token]").content
+                    'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').content
                 },
                 success: function(file, response){
+                    // console.log(response.correcto);
                     const alerta = document.querySelector("#alerta");
-                    alert.textContent = ""
+                    alert.textContent = "";
+                    //Coloca la respuesta del servidor en el input hidden
+                    document.querySelector("#imagen").value = response.correcto;
                 },
                 error: function(file, response){
                     const alerta = document.querySelector("#alerta");
-                    alert.textContent = "Formato no valido";
+                    alerta.textContent = "Formato no valido";
                 },
                 maxFilesexceeded: function(file){
                     if (this.files[1] != null ){
-                        this.removeFile(this.files[0]);
-                        this.addFile(file);
+                        this.removeFile(this.files[0]);//elimina el anterior
+                        this.addFile(file);//agrega el nuevo archivo
                     }
                 },
-                removeddile: function(file, response){
-
+                removedfile: function(file, response){
+                    console.log("borrado es", file);
                 }
             });
         })
