@@ -35,58 +35,102 @@
         {{-- Experiencia --}}
         <div class="mb-5">
             <label for="experiencia" class="block text-gray-700 text-sm mb-2">Experiencia: </label>
-            <select name="" id="experiencia"
+            <select id="experiencia"
                 class="block appearance-none border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 p-3 bg-gray-100 w-full"
-                name="experiencia">
-                <option value="" disabled selected>--Seleccione--</option>
+                name="experiencia"
+            >
+                <option disabled selected>--Seleccione--</option>
                 @foreach ($experiencias as $experiencia)
-                    <option value="{{$experiencia->id}}">
+                    <option
+                        {{old("experiencia") == $experiencia->id ? "selected" : ""}}
+                        value="{{$experiencia->id}}"
+                        >
                         {{$experiencia->nombre}}
                     </option>
                 @endforeach
             </select>
+
+            @error("experiencia")
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-3 mb-6 " role="alert">
+                    <strong class="font-bold">Error!</strong>
+                    <span class="block">{{$message}}</span>
+                </div>
+            @enderror
         </div>
         {{-- Categoria --}}
         <div class="mb-5">
             <label for="categoria" class="block text-gray-700 text-sm mb-2">Categoria: </label>
-            <select name="" id="categoria"
+            <select id="categoria"
                 class="block appearance-none border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 p-3 bg-gray-100 w-full"
-                name="categoria">
-                <option value="" disabled selected>--Seleccione--</option>
+                name="categoria"
+            >
+                <option  value="" disabled selected>--Seleccione--</option>
                 @foreach ($categorias as $categoria)
-                    <option value="{{$categoria->id}}">
+                    <option
+                        {{old("categoria") == $categoria->id ? "selected" : ""}}
+                        value="{{$categoria->id}}"
+                    >
                         {{$categoria->nombre}}
                     </option>
                 @endforeach
             </select>
+
+            @error("categoria")
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-3 mb-6 " role="alert">
+                <strong class="font-bold">Error!</strong>
+                <span class="block">{{$message}}</span>
+            </div>
+            @enderror
+
         </div>
         {{-- Ubicacion --}}
         <div class="mb-5">
             <label for="ubicacion" class="block text-gray-700 text-sm mb-2">Ubicacion: </label>
-            <select name="" id="ubicacion"
+            <select id="ubicacion"
                 class="block appearance-none border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 p-3 bg-gray-100 w-full"
-                name="ubicacion">
+                name="ubicacion"
+            >
                 <option value="" disabled selected>--Seleccione--</option>
                 @foreach ($ubicaciones as $ubicacion)
-                    <option value="{{$ubicacion->id}}">
+                    <option
+                        {{old("ubicacion") == $ubicacion->id ? "selected" : ""}}
+                        value="{{$ubicacion->id}}"
+                    >
                         {{$ubicacion->nombre}}
                     </option>
                 @endforeach
             </select>
+
+            @error("ubicacion")
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-3 mb-6 " role="alert">
+                <strong class="font-bold">Error!</strong>
+                <span class="block">{{$message}}</span>
+            </div>
+            @enderror
         </div>
         {{-- SALARIO --}}
         <div class="mb-5">
             <label for="salario" class="block text-gray-700 text-sm mb-2">Salario: </label>
-            <select name="" id="salario"
+            <select id="salario"
                 class="block appearance-none border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 p-3 bg-gray-100 w-full"
-                name="salario">
-                <option value="" disabled selected>--Seleccione--</option>
+                name="salario"
+            >
+                <option  disabled selected>--Seleccione--</option>
                 @foreach ($salarios as $salario)
-                    <option value="{{$salario->id}}">
+                    <option
+                        {{old("salario") == $salario->id ? "selected" : ""}}
+                        value="{{$salario->id}}">
                         {{$salario->nombre}}
                     </option>
                 @endforeach
             </select>
+
+            @error("salario")
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-3 mb-6 " role="alert">
+                <strong class="font-bold">Error!</strong>
+                <span class="block">{{$message}}</span>
+            </div>
+            @enderror
         </div>
 
         <div class="mb-5">
