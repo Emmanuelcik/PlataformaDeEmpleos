@@ -86,6 +86,16 @@
         </div>
 
         <div class="mb-5">
+            <label for="habilidades"
+            class="block text-gray-700 text-sm mb-2">Habilidades del Puesto: </label>
+
+            @php
+            $skills = ['HTML5', 'CSS3', 'CSSGrid', 'Flexbox', 'JavaScript', 'jQuery', 'Node', 'Angular', 'VueJS', 'ReactJS', 'React Hooks', 'Redux', 'Apollo', 'GraphQL', 'TypeScript', 'PHP', 'Laravel', 'Symfony', 'Python', 'Django', 'ORM', 'Sequelize', 'Mongoose', 'SQL', 'MVC', 'SASS', 'WordPress', 'Express', 'Deno', 'React Native', 'Flutter', 'MobX', 'C#', 'Ruby on Rails']
+            @endphp
+            <lista-skills :skills="{{json_encode($skills)}}"></lista-skills>
+        </div>
+
+        <div class="mb-5">
             <label for="dropzoneDevJobs"
             class="block text-gray-700 text-sm mb-2">Imagen de la vacante: </label>
 
