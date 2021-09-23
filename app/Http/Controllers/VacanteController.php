@@ -53,7 +53,10 @@ class VacanteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validacion
+        $data = $request->validate([
+            "titulo" => "required|min:8",
+        ]);
     }
 
     /**
