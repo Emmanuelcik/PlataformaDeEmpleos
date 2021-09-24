@@ -150,7 +150,7 @@
             @enderror
 
         </div>
-
+        {{-- SKILLSS --}}
         <div class="mb-5">
             <label for="habilidades"
             class="block text-gray-700 text-sm mb-2">Habilidades del Puesto: </label>
@@ -158,9 +158,22 @@
             @php
             $skills = ['HTML5', 'CSS3', 'CSSGrid', 'Flexbox', 'JavaScript', 'jQuery', 'Node', 'Angular', 'VueJS', 'ReactJS', 'React Hooks', 'Redux', 'Apollo', 'GraphQL', 'TypeScript', 'PHP', 'Laravel', 'Symfony', 'Python', 'Django', 'ORM', 'Sequelize', 'Mongoose', 'SQL', 'MVC', 'SASS', 'WordPress', 'Express', 'Deno', 'React Native', 'Flutter', 'MobX', 'C#', 'Ruby on Rails']
             @endphp
-            <lista-skills :skills="{{json_encode($skills)}}"></lista-skills>
+            <lista-skills
+                :skills="{{json_encode($skills)}}"
+                :oldskills="{{json_encode( old("skills") ) }}"
+            >
+
+            </lista-skills>
+
+            @error("skills")
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-3 mb-6 " role="alert">
+                <strong class="font-bold">Error!</strong>
+                <span class="block">{{$message}}</span>
+            </div>
+            @enderror
         </div>
 
+        {{-- DROPZONE --}}
         <div class="mb-5">
             <label for="dropzoneDevJobs"
             class="block text-gray-700 text-sm mb-2">Imagen de la vacante: </label>
@@ -176,7 +189,7 @@
                 <strong class="font-bold">Error!</strong>
                 <span class="block">{{$message}}</span>
             </div>
-        @enderror
+            @enderror
         </div>
 
         <button type="submit" class="bg-teal-500 w-full hover:bg-teal-600 text-gray-100 font-bold p-3 focus:outline focus:shadow-outline uppercase">
@@ -235,8 +248,6 @@
                         this.options.thumbnail.call(this, imagenPublicada, `/storage/vacantes/${imagenPublicada.name}`);
                         imagenPublicada.previewElement.classList.add("dz-success")
                         imagenPublicada.previewElement.classList.add("dz-complete")
-                    }else{
-                        console.log("no hay")
                     }
                 },
                 success: function(file, response){
