@@ -18,15 +18,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Grupo con rutas que comparten un middleware
 //VACANTES
-Route::get("/vacantes", "vacanteController@index")->name("vacantes.index");
-Route::get("/vacantes/create", "vacanteController@create")->name("vacantes.create");
-Route::post("/vacantes", "vacanteController@store")->name("vacantes.store");
+Route::group(["middleware" =>["auth", "verified"] ] ,function (){
+    Route::get("/vacantes", "vacanteController@index")->name("vacantes.index");
+    Route::get("/vacantes/create", "vacanteController@create")->name("vacantes.create");
+    Route::post("/vacantes", "vacanteController@store")->name("vacantes.store");
 
-//Subir imagenes
-Route::post('vacantes/imagen', "VacanteController@imagen")->name("vacantes.imagen");
-Route::post('vacantes/borrarimagen', "VacanteController@borrarimagen")->name("vacantes.borrar");
+    //Subir imagenes
+    Route::post('vacantes/imagen', "VacanteController@imagen")->name("vacantes.imagen");
+    Route::post('vacantes/borrarimagen', "VacanteController@borrarimagen")->name("vacantes.borrar");
+} );
+
+//Muestra lso trabajos en el frontend pero sin autenticacion
+Route::get("/vacantes/{vacante}", "vacanteController@show")->name("vacantes.show");
+
+

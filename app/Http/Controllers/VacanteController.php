@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\File;
 
 class VacanteController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(["auth", "verified"]);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -89,7 +85,8 @@ class VacanteController extends Controller
      */
     public function show(Vacante $vacante)
     {
-        //
+
+        return view("vacantes.show")->with("vacante", $vacante);
     }
 
     /**
