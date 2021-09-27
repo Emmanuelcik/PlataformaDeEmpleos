@@ -35,7 +35,13 @@ class CandidatoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validacion
+        $data = $request->validate([
+            "nombre" => "required",
+            "email" => "required|email",
+            "cv" => "required|mimes:pdf|max:1000",
+            "vacante_id" => "required",
+        ]);
     }
 
     /**
