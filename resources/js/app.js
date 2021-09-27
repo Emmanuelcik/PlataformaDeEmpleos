@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+require('lightbox2');
 
 window.Vue = require('vue');
 
