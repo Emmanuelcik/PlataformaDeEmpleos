@@ -40,7 +40,7 @@ class CandidatoController extends Controller
         $data = $request->validate([
             "nombre" => "required",
             "email" => "required|email",
-            // "cv" => "required|mimes:pdf|max:1000",
+            "cv" => "required|mimes:pdf|max:1000",
             "vacante_id" => "required",
         ]);
 
@@ -62,14 +62,23 @@ class CandidatoController extends Controller
         // $candidato->cv = "123.pdf";
         // $candidato->save();
 
+        //Alamacenar archivo PDF
+        if($request->file("cv")){
+            $archivo = $request->file("cv");
+            $nombreArchivo = time() . "." . $request->file("cv")->extension();
+            $ubicacion = public_path("/storage/cv");
+            $archivo->move($ubicacion, $nombreArchivo);
+
+        }
+
         $vacante = Vacante::find($data["vacante_id"]);
         $vacante->candidatos()->create([
             "nombre" => $data["nombre"],
             "email" => $data["email"],
-            "cv" => "1234.pdf",
+            "cv" => $nombreArchivo,
         ]);
 
-        return redirect()->route("vacantes.index");
+        return back();
     }
 
     /**
