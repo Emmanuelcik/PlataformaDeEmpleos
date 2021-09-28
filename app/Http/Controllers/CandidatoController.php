@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Candidato;
+use App\Vacante;
 use Illuminate\Http\Request;
 
 class CandidatoController extends Controller
@@ -39,9 +40,36 @@ class CandidatoController extends Controller
         $data = $request->validate([
             "nombre" => "required",
             "email" => "required|email",
-            "cv" => "required|mimes:pdf|max:1000",
+            // "cv" => "required|mimes:pdf|max:1000",
             "vacante_id" => "required",
         ]);
+
+        //forma uno
+        // $candidato = new Candidato();
+        // $candidato->nombre = $data["nombre"];
+        // $candidato->email = $data["email"];
+        // $candidato->cv = "123.pdf";
+        // $candidato->vacante_id = $data["vacante_id"];
+        // $candidato->save();
+
+        //Segunda forma
+        // $candidato = new Candidato($data);
+        // $candidato->save();
+
+        //Forma 3
+        // $candidato = new Candidato();
+        // $candidato->fill($data);
+        // $candidato->cv = "123.pdf";
+        // $candidato->save();
+
+        $vacante = Vacante::find($data["vacante_id"]);
+        $vacante->candidatos()->create([
+            "nombre" => $data["nombre"],
+            "email" => $data["email"],
+            "cv" => "1234.pdf",
+        ]);
+
+        return redirect()->route("vacantes.index");
     }
 
     /**
