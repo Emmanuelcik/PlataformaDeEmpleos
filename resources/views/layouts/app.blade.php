@@ -21,6 +21,13 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="bg-gray-200 min-h-screen leading-none" >
+    @if (session("estado"))
+        <div class="bg-teal-500 p-4 text-center text-white font-bold uppercase" >
+            {{session("estado")}}
+        </div>
+    @else
+
+    @endif
     <div id="app">
         <nav class="bg-gray-800 shadow-md py-2">
             <div class="container contenedor mx-auto md:px-0">
