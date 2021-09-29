@@ -79,8 +79,8 @@ class CandidatoController extends Controller
             "cv" => $nombreArchivo,
         ]);
 
-        $reclutador = $vacante->reclutador();
-        $reclutador->notify(new NuevoCandidato());
+        $reclutador = $vacante->reclutador;
+        $reclutador->notify(new NuevoCandidato($vacante->titulo));
 
         return back()->with("estado", "Tus datos se enviaron correctamente...!!");
     }
