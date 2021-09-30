@@ -35,7 +35,8 @@ Route::group(["middleware" =>["auth", "verified"] ] ,function (){
 });
 
 //Enviar datos para una vacante
-Route::post("candidatos/store", "CandidatoController@store")->name("candidatos.store");
+Route::get("/candidatos/{id}", "CandidatoController@index")->name("candidatos.index");
+Route::post("/candidatos/store", "CandidatoController@store")->name("candidatos.store");
 
 //Muestra lso trabajos en el frontend pero sin autenticacion
 Route::get("/vacantes/{vacante}", "vacanteController@show")->name("vacantes.show");

@@ -4,5 +4,90 @@
 @tailwind utilities;
 .contenedor {
   max-width: 1000px;
+  width: 95%;
   margin: 0 auto;
+}
+
+.medium-editor-toolbar-active {
+  visibility: visible;
+  background: rgba(56, 178, 172, var(--bg-opacity));
+  color: white;
+}
+
+.medium-editor-element,
+.descripcion {
+  min-height: 300px;
+}
+.medium-editor-element ol, .medium-editor-element ul, .medium-editor-element h1, .medium-editor-element h2, .medium-editor-element h3, .medium-editor-element p, .medium-editor-element a,
+.descripcion ol,
+.descripcion ul,
+.descripcion h1,
+.descripcion h2,
+.descripcion h3,
+.descripcion p,
+.descripcion a {
+  color: #4a5568;
+}
+.medium-editor-element ol, .medium-editor-element ul,
+.descripcion ol,
+.descripcion ul {
+  padding-left: 50px;
+}
+.medium-editor-element ol,
+.descripcion ol {
+  list-style: decimal;
+}
+.medium-editor-element ul,
+.descripcion ul {
+  list-style: disc;
+}
+.medium-editor-element h2, .medium-editor-element h3,
+.descripcion h2,
+.descripcion h3 {
+  margin: 1rem 0;
+}
+.medium-editor-element h2,
+.descripcion h2 {
+  font-size: 1.8rem;
+}
+.medium-editor-element h3,
+.descripcion h3 {
+  font-size: 2.2rem;
+}
+.medium-editor-element p,
+.descripcion p {
+  font-size: 1rem;
+  line-height: 2;
+}
+
+.dropzone {
+  text-align: center;
+  border: 2px dashed #C1C1C1;
+  min-height: 80px;
+  height: auto;
+  width: 100%;
+  display: inline-block;
+}
+.dropzone .dz-error {
+  display: none;
+}
+.dropzone .dz-message .dz-button {
+  color: #666;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  gap: 1rem;
+}
+.pagination .page-link {
+  font-size: 0.8rem;
+  margin-right: 2rem;
+}
+.pagination a {
+  color: #38b2ac;
+}
+.pagination span.page-link {
+  color: #718096;
 }/*# sourceMappingURL=app.css.map */
