@@ -2193,10 +2193,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["estado"],
+  props: ["estado", "vacanteId"],
   mounted: function mounted() {
-    console.log(this.estado);
+    // console.log(this.estado)
+    // console.log(Number(this.vacanteId))
+    this.estadoVacanteData = Number(this.estado);
+  },
+  data: function data() {
+    return {
+      estadoVacanteData: null
+    };
+  },
+  methods: {
+    cambiarEstado: function cambiarEstado() {
+      if (this.estadoVacanteData === 1) {
+        this.estadoVacanteData = 0;
+      } else {
+        this.estadoVacanteData = 1;
+      } //Enviar peticion a axios
+
+    },
+    claseEstado: function claseEstado() {
+      return this.estadoVacanteData === 1 ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800";
+    }
+  },
+  computed: {
+    estadoVacante: function estadoVacante() {
+      return this.estadoVacanteData === 1 ? "Activa" : "Inactiva";
+    }
   }
 });
 
@@ -38506,10 +38536,13 @@ var render = function() {
   return _c(
     "span",
     {
+      key: _vm.estadoVacanteData,
       staticClass:
-        "px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
+        "px-2 inline-flex text-xs leading-5 font-semibold rounded-full ",
+      class: _vm.claseEstado(),
+      on: { click: _vm.cambiarEstado }
     },
-    [_vm._v("\n    Activa\n")]
+    [_vm._v("\n    " + _vm._s(_vm.estadoVacante) + "\n")]
   )
 }
 var staticRenderFns = []
