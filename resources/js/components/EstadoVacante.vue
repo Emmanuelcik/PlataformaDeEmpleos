@@ -31,6 +31,13 @@ export default {
             }
 
             //Enviar peticion a axios
+            const params = {
+                estado: this.estadoVacanteData
+            }
+            axios
+                .post("/vacantes/" + this.vacanteId, params)
+                .then(res => console.log(res))
+                .catch(err => console.log(err))
         },
         claseEstado(){
             return this.estadoVacanteData === 1 ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"

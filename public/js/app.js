@@ -2218,6 +2218,15 @@ __webpack_require__.r(__webpack_exports__);
         this.estadoVacanteData = 1;
       } //Enviar peticion a axios
 
+
+      var params = {
+        estado: this.estadoVacanteData
+      };
+      axios.post("/vacantes/" + this.vacanteId, params).then(function (res) {
+        return console.log(res);
+      })["catch"](function (err) {
+        return console.log(err);
+      });
     },
     claseEstado: function claseEstado() {
       return this.estadoVacanteData === 1 ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800";
