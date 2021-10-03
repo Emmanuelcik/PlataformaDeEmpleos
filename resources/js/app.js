@@ -22,6 +22,7 @@ window.Vue = require('vue');
 
 Vue.component('lista-skills', require('./components/ListaSkills.vue').default);
 Vue.component('estado-vacante', require('./components/EstadoVacante.vue').default);
+Vue.component('eliminar-vacante', require('./components/EliminarVacante.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
