@@ -12,8 +12,9 @@
 
 @section('content')
 <h1 class="text-2xl text-center mt-10">Editar vacante: {{$vacante->titulo}}</h1>
-<form class="max-w-lg mx-auto my-10" action="{{route("vacantes.store")}}" method="POST">
-        @csrf
+<form class="max-w-lg mx-auto my-10" action="{{route("vacantes.update", ["vacante" => $vacante->id])}}" method="POST">
+@csrf
+@method("PUT")
         <div class="mb-5">
             <label for="titulo" class="block text-gray-700 text-sm mb-2">Titulo Vacante: </label>
             <input
