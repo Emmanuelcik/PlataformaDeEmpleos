@@ -2211,7 +2211,19 @@ __webpack_require__.r(__webpack_exports__);
         cancelButtonText: "Cancelar "
       }).then(function (result) {
         if (result.isConfirmed) {
-          _this.$swal.fire('Eliminada!', 'Tu vacante se eliminó exitosamente!.', 'success');
+          var params = {
+            id: _this.vacanteId,
+            _method: "delete"
+          }; //Enviar peticion a axios
+
+          axios.post("/vacantes/".concat(_this.vacanteId), params).then(function (respuesta) {
+            _this.$swal.fire('Eliminada!', respuesta.data.mensaje, 'success'); //Eliminarla del DOM
+
+
+            _this.$el.parentNode.parentNode.parentNode.removeChild(_this.$el.parentNode.parentNode);
+          })["catch"](function (err) {
+            return console.log(err);
+          });
         }
       });
     }

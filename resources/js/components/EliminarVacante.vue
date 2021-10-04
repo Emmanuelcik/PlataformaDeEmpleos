@@ -23,11 +23,24 @@ export default {
             })
             .then((result) => {
                 if (result.isConfirmed) {
-                    this.$swal.fire(
-                    'Eliminada!',
-                    'Tu vacante se eliminó exitosamente!.',
-                    'success'
-                    )
+
+                    const params = {
+                        id: this.vacanteId,
+                        _method: "delete",
+                    };
+                    //Enviar peticion a axios
+                    axios.post(`/vacantes/${this.vacanteId}`, params)
+                        .then(respuesta => {
+                            this.$swal.fire(
+                            'Eliminada!',
+                            respuesta.data.mensaje,
+                            'success'
+                            )
+
+                            //Eliminarla del DOM
+                            this.$el.parentNode.parentNode.parentNode.removeChild(this.$el.parentNode.parentNode)
+                        })
+                        .catch(err => console.log(err));
                 }
             })
         }
