@@ -97,7 +97,16 @@ class VacanteController extends Controller
      */
     public function edit(Vacante $vacante)
     {
-        //
+        $categorias = Categoria::all();
+        $experiencias = Experiencia::all();
+        $ubicaciones = Ubicacion::all();
+        $salarios = Salario::all();
+        return view("vacantes.edit")
+                ->with("vacante", $vacante)
+                ->with("categorias", $categorias)
+                ->with("experiencias", $experiencias)
+                ->with("ubicaciones", $ubicaciones)
+                ->with("salarios", $salarios);
     }
 
     /**
