@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('navegacion')
+    @include("UI.CategoriasNav")
+@endsection
 
 @section('content')
     <div class="flex flex-col shadow bg-white lg:flex-row">

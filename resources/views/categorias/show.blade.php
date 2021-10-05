@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('navegacion')
+    @include("UI.CategoriasNav")
+@endsection
 
 @section('content')
 
