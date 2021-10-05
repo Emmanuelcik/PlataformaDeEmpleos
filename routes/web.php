@@ -14,11 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes(["verify" => true]);
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 //Grupo con rutas que comparten un middleware
 //VACANTES
@@ -40,6 +36,8 @@ Route::group(["middleware" =>["auth", "verified"] ] ,function (){
     Route::get('/notificaciones', "NotificacionesController")->name("notificaciones");
 });
 
+//PAGINA DE INCIO
+Route::get("/", "InicioController")->name("inicio");
 //Enviar datos para una vacante
 Route::get("/candidatos/{id}", "CandidatoController@index")->name("candidatos.index");
 Route::post("/candidatos/store", "CandidatoController@store")->name("candidatos.store");
